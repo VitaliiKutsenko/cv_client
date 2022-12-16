@@ -1,0 +1,8 @@
+//triggers
+export const UPLOAD_USER_IMAGE = 'UPLOAD_USER_IMAGE';
+//success
+
+export const UPLOAD_USER_IMAGE_SUCCESS = 'UPLOAD_USER_IMAGE_SUCCESS';
+
+//error
+export const UPLOAD_USER_IMAGE_REJECT = 'UPLOAD_USER_IMAGE_REJECT';
