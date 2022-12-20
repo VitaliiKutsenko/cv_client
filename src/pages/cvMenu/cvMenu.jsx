@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CvItemWrapper } from './cvMenuStyled';
 import { SelectMenu } from './components/selectMenu/selectMenu';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -20,6 +20,14 @@ const CvMenu = () => {
       navigateToMain(`/${params.username}/${params.name}`);
     }
   };
+
+  useEffect(() => {
+    const rootElem = document.querySelector('#root');
+
+    rootElem.classList.add('no-scroll');
+
+    return () => rootElem.classList.remove('no-scroll');
+  }, []);
 
   return (
     <CvItemWrapper className="modal_wrapper" onClick={modalHandler}>

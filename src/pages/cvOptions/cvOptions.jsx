@@ -1,57 +1,76 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ColorPicker } from './components/colorPicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCvField, changeOptions } from '../../store/cv/userCv/userCvActions';
-import { BorderOptions } from './components/borderOptions';
+import { BorderOptions } from './components/borderOptions/borderOptions';
 import styled from 'styled-components';
+import { PreviewElem } from './components/previewElem';
+import { addFieldOptions, addOptions } from '../../store/cv/cvOptions/cvOptionsActions';
+import { PositionOptions } from './components/positionOptions/positionOptions';
+import { FieldOptions } from './components/fieldOptions/fieldOptions';
 
 export const CvOptions = ({}) => {
-  const navigateToMain = useNavigate();
   const location = useLocation();
   const { path, id, options } = location.state;
   const optionsDispatch = useDispatch();
 
   const cv = useSelector(store => store.userCv.cv);
-  const cvOptions = cv?.data[path]?.find(item => item.id === id)?.options;
-  const [option, setOptions] = useState(cvOptions || {});
+  const cvOptions = cv?.data[path]?.find(item => item.id === id);
+  const [option, setOptions] = useState(cvOptions.options || {});
+  const [fieldsState, setFieldsState] = useState(null);
 
-  const modalHandler = e => {
-    const elem = [...e.target.classList].includes('modal_wrapper');
-
-    if (elem) {
-      navigateToMain(-1);
-    }
-  };
+  const { cvCardOptions, cvCardFieldOptions } = useSelector(store => store.cvOptions);
 
   useEffect(() => {
-    optionsDispatch(
-      changeOptions({
-        path,
-        id,
-        options,
-      })
-    );
-  }, [options]);
+    optionsDispatch(addOptions({ ...option }));
+  }, [option]);
+
+  useEffect(() => {
+    if (fieldsState) {
+      optionsDispatch(
+        addFieldOptions({
+          fieldsState,
+          path,
+          id,
+        })
+      );
+    }
+  }, [fieldsState]);
+
+  const compileField = () => {
+    const field = cv.data[path].find(item => item.id === id);
+
+    return {
+      ...field,
+      options: cvCardOptions,
+    };
+  };
 
   const handleSaveClick = () => {
     optionsDispatch(
       addCvField({
         collectionId: cv.collectionId,
-        [path]: cv.data[path].find(item => item.id === id),
+        [path]: compileField(),
       })
     );
   };
 
-  console.log(options);
-
   return (
-    <CvOptionsWrapper className={'modal_wrapper'} onClick={modalHandler}>
+    <CvOptionsWrapper>
+      <PreviewElem
+        elem={cvOptions}
+        path={path}
+        options={cvCardOptions}
+        setFieldsState={setFieldsState}
+      />
       <OptionsPanel>
         <button onClick={handleSaveClick}>Save</button>
         <h2>Options</h2>
         <ColorPicker options={options} setOptions={setOptions} />
-        <BorderOptions options={options} setOptions={setOptions} />
+        <BorderOptions options={cvCardOptions} setOptions={setOptions} />
+        <PositionOptions options={cvCardOptions} setOptions={setOptions} />
+        <FieldOptions cvCardFieldOptions={cvCardFieldOptions} />
       </OptionsPanel>
     </CvOptionsWrapper>
   );
@@ -66,6 +85,8 @@ export const CvOptionsWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
   transition: 0.5s linear;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 `;
 export const OptionsPanel = styled.ul`
   height: 100%;

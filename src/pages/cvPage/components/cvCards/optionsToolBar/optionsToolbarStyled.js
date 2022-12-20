@@ -1,25 +1,30 @@
 import styled from 'styled-components';
 
-export const OptionsToolbarWrapper = styled.li`
+export const OptionsToolbarWrapper = styled.ul`
   width: 100%;
   height: 100%;
   list-style: none;
+  padding: 5px;
 `;
 export const OptionsToolbarPanel = styled.div`
   width: 100%;
   height: fit-content;
   display: flex;
-  padding: 10px;
   justify-content: flex-end;
-  background: rgba(169, 169, 169, 0.5);
-  border-radius: ${({ options }) =>
-    options?.cvCard?.border?.borderRadius
-      ? options?.cvCard?.border?.borderRadius +
-        ' ' +
-        options?.cvCard?.border?.borderRadius +
-        ' ' +
-        '0px' +
-        ' ' +
-        '0px'
-      : '10px 10px 0 0'};
+  border-radius: 5px;
+  & button {
+    background: transparent;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    & svg {
+      width: 25px;
+      height: 25px;
+      fill: gray;
+      &:hover {
+        fill: cadetblue;
+      }
+    }
+  }
 `;

@@ -6,6 +6,7 @@ import { auth } from './auth/authReducers';
 import { loader } from './loader/loaderReducer';
 import { collections } from './cv/userCollections/collectionsReducer';
 import { userImage } from './cv/userImage/userImageReducer';
+import { cvOptions } from './cv/cvOptions/cvOptionsReducer';
 
 export const appReducer = combineReducers({
   auth,
@@ -14,6 +15,7 @@ export const appReducer = combineReducers({
   userCv,
   loader,
   userImage,
+  cvOptions,
 });
 
 export const rootReducer = (state, action) => {

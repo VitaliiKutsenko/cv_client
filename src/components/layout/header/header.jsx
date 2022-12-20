@@ -1,8 +1,8 @@
 import React from 'react';
 import { HeaderWrapper } from './headerStyle';
 
-import { PersonalArea } from '../../../components/personalArea/personalArea';
-import { CustomLink } from '../../../components/customLinks/customLink';
+import { PersonalArea } from '../../personalArea/personalArea';
+import { CustomLink } from '../../customLinks/customLink';
 
 const Header = () => {
   return (
