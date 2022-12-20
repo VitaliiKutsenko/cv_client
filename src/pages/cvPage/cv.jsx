@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
-import { CvWrapper } from './cvStyled';
-import { CvHeader } from './components/cvHeader/cvHeader';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { CvMainWrapper, CvWrapper } from './cvStyled';
+import { Outlet, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserCv } from '../../store/cv/userCv/userCvActions';
 import { UserSpace } from './components/userSpace/userSpace';
-import UserSpaceContext from '../../context/context';
+import { selectUserCv } from '../../selectors/userCvSelectors';
+import { CvLeftColumn } from './cvLeftColumn';
+import { CvRightColumn } from './cvRightColumn';
 
 const Cv = () => {
   const { username, name } = useParams();
   const userCv = useSelector(store => store.userCv || {});
+  const { rightColumn, leftColumn } = useSelector(selectUserCv);
+
   const fetchAllCvDispatch = useDispatch();
 
   useEffect(() => {
@@ -27,11 +30,13 @@ const Cv = () => {
     return (
       <CvWrapper>
         <UserSpace>
-          <CvHeader content={userCv} />
-          {/*<CvMain content={userCv} />*/}
-
-          <Outlet />
+          <CvMainWrapper>
+            <CvLeftColumn content={leftColumn} />
+            <CvRightColumn content={rightColumn} />
+          </CvMainWrapper>
         </UserSpace>
+
+        <Outlet />
       </CvWrapper>
     );
   }

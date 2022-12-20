@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { PhotoCard_loadField, PhotoCard_preview, PhotoCardWrapper } from './photoCardStyled';
+import { PhotoCard_loadField, PhotoCardPreview, PhotoCardWrapper } from './photoCardStyled';
 import { FormHeader } from '../../editCard/formHeaderMenu/formHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadUserImage } from '../../../../store/cv/userImage/userImageActions';
@@ -28,7 +28,7 @@ export const PhotoCard = ({ collectionId }) => {
       const buildImageField = {
         photo: {
           id: 1,
-          options: {},
+          options: { area: { position: 'left' } },
           fields: [
             {
               name: 'Photo',
@@ -56,9 +56,9 @@ export const PhotoCard = ({ collectionId }) => {
         handleRemoveAdditionalField={handleRemoveAdditionalField}
       />
 
-      <PhotoCard_preview>
+      <PhotoCardPreview>
         {userImage && <img alt="hello" src={`${API_URL}/${userImage?.image?.url}`} />}
-      </PhotoCard_preview>
+      </PhotoCardPreview>
       <PhotoCard_loadField>
         <button onClick={() => loadRef.current.click()}>Upload</button>
         <input

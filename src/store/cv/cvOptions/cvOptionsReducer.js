@@ -1,38 +1,28 @@
-import { ADD_CV_CARD_OPTIONS, ADD_CV_FIELD_OPTIONS, GET_OPTIONS } from './cvOptionsActionTypes';
+import { ADD_OPTIONS, ADD_FIELD_OPTIONS } from './cvOptionsActionTypes';
 
 const initialState = {
-  cvCard: {
-    background: '',
-    borderRadius: '',
-  },
-  cvFields: {},
-  error: null,
+  cvCardOptions: {},
+  cvCardFieldOptions: {},
 };
 
-export const options = (state = initialState, { type, payload }) => {
+export const cvOptions = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ADD_CV_CARD_OPTIONS:
+    case ADD_OPTIONS:
       return {
         ...state,
-        cvCard: {
-          ...state.cvCard,
-          payload,
+        cvCardOptions: {
+          ...state.cvCardOptions,
+          ...payload,
         },
       };
 
-    case ADD_CV_FIELD_OPTIONS:
+    case ADD_FIELD_OPTIONS:
       return {
         ...state,
-        cvFields: {
-          ...state.cvFields,
-          payload,
+        cvCardFieldOptions: {
+          ...state.cvCardFieldOptions,
+          ...payload,
         },
-      };
-
-    case GET_OPTIONS:
-      return {
-        ...state,
-        ...payload,
       };
 
     default:

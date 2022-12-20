@@ -13,6 +13,7 @@ const initialState = {
 };
 
 export const userCv = (state = initialState, { type, payload }) => {
+  // console.log(state);
   switch (type) {
     case CHANGE_OPTIONS:
       const { id, options, path } = payload;

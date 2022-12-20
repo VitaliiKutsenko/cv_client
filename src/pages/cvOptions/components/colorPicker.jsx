@@ -16,10 +16,7 @@ export const ColorPicker = ({ options, setOptions }) => {
     setOptions(prev => {
       return {
         ...prev,
-        cvCard: {
-          ...prev.cvCard,
-          background: colorCreator,
-        },
+        cardBackground: colorCreator,
       };
     });
   };

@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { UserSpaceWrapper } from './userSpaceStyled';
+import { ContentWrapper, UserSpaceWrapper } from './userSpaceStyled';
 import { UserPanel } from './userPanel';
 import { useNavigate } from 'react-router-dom';
 import UserSpaceContext from '../../../../context/context';
@@ -14,10 +14,12 @@ export const UserSpace = ({ children }) => {
 
   if (auth.success) {
     return (
-      <UserSpaceWrapper>
-        <UserPanel setEdit={setEdit} />
+      <>
+        <UserSpaceWrapper>
+          <UserPanel setEdit={setEdit} />
+        </UserSpaceWrapper>
         <UserSpaceContext.Provider value={edit}>{children}</UserSpaceContext.Provider>
-      </UserSpaceWrapper>
+      </>
     );
   }
 

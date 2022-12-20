@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from 'react-router-dom';
-import { ErrorPage } from '../pages/errorPage/errorPage';
-import { Layout } from '../pages/layout/layout';
+import { ErrorPage } from '../components/errorPage/errorPage';
+import { Layout } from '../components/layout/layout';
 import Cv from '../pages/cvPage/cv';
 import CvMenu from '../pages/cvMenu/cvMenu';
 import UserPage from '../pages/userPage/userPage';
