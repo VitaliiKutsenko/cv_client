@@ -19,6 +19,8 @@ export const Collection = ({ item }) => {
     dispatch(removeCollection(id));
   };
 
+  console.log(item.name);
+
   return (
     <li>
       <div className="collection_main">

@@ -9,6 +9,11 @@ export const CvCardFieldsWrapper = styled.li`
   border-radius: 1px;
   margin-top: 5px;
 
+  &:hover {
+    background: ${({ setFieldsState }) =>
+      setFieldsState ? 'rgba(182, 182, 182, 0.5)' : 'transparent'};
+  }
+
   & .label {
     padding: 5px;
     width: 30%;
@@ -19,12 +24,11 @@ export const CvCardFieldsWrapper = styled.li`
     margin: 5px;
   }
 
-  &:hover {
-    background: ${({ setFieldsState }) =>
-      setFieldsState ? 'rgba(182, 182, 182, 0.5)' : 'transparent'};
-  }
-
-  &.skills {
+  //HARDCODE STYLE
+  &.skills,
+  &.languages,
+  &.soft_skills,
+  &.hobbies {
     & ol {
       display: flex;
       flex-direction: row;
@@ -37,10 +41,10 @@ export const CvCardFieldsWrapper = styled.li`
   }
 
   &.employment {
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1px 1px rgba(116, 116, 116, 0.5);
     align-items: center;
-
-    &:nth-child(4) {
+    border-radius: 5px;
+    &:nth-child(6) {
       flex-direction: column;
 
       & ol {
@@ -49,7 +53,7 @@ export const CvCardFieldsWrapper = styled.li`
       }
 
       & ol li:before {
-        left: -5px;
+        left: -10px;
         top: calc(15px / 2);
         content: '';
         position: absolute;
@@ -72,11 +76,75 @@ export const CvCardFieldsWrapper = styled.li`
       }
     }
   }
+
+  &.about_my_self {
+    & ol li:before {
+      left: -10px;
+      top: calc(15px / 2);
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      box-shadow: inset 0 0 1px 1px black;
+      border-radius: 50%;
+    }
+
+    & ol {
+      display: flex;
+      flex-direction: row;
+      width: fit-content;
+
+      & li {
+        box-shadow: none;
+        position: relative;
+      }
+    }
+  }
+
+  &.education {
+    box-shadow: 0 0 1px 1px rgba(116, 116, 116, 0.5);
+    border-radius: 5px;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    & .label {
+      margin: 0;
+    }
+    & ol {
+      display: flex;
+      flex-direction: row;
+      width: fit-content;
+
+      & li {
+        box-shadow: none;
+        position: relative;
+        margin: 0;
+      }
+    }
+  }
+  &.contact_info {
+    box-shadow: 0 0 1px 1px rgba(116, 116, 116, 0.5);
+    border-radius: 5px;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    & .label {
+      margin: 0;
+    }
+    & ol {
+      & li {
+        width: 100%;
+        overflow-wrap: break-word;
+        box-shadow: none;
+        margin: 0;
+      }
+    }
+  }
 `;
 
 export const CardListContainer = styled.ol`
   width: 100%;
-  height: fit-content;
+  height: 100%;
   list-style: ${({ options }) => options?.listStyle || 'none'};
   display: flex;
   flex-wrap: wrap;
@@ -85,13 +153,13 @@ export const CardListContainer = styled.ol`
 
 export const CardList = styled.li`
   width: content-box;
-  padding: 3px;
-  border-radius: 3px;
-  height: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+  justify-self: center;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
   background: white;
   margin: 5px;
-  height: 100%;
+  height: fit-content;
 `;
 
 export const DateList = styled.div`

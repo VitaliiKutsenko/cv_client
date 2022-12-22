@@ -8,7 +8,6 @@ const UserPage = ({}) => {
     <UserPageWrapper>
       <UserOutlet>
         <Outlet />
-        {/*<div className="decor"></div>*/}
       </UserOutlet>
       <UserLinks>
         <CustomLink to="profile">Profile</CustomLink>

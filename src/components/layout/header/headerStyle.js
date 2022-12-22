@@ -15,8 +15,7 @@ export const HeaderWrapper = styled.header`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    //height: 60px;
-    background: whitesmoke;
+    background: linear-gradient(#a5a5a5, rgba(255, 255, 255, 0.45));
     box-shadow: 0 0 3px 0 black;
     padding: 30px;
   }

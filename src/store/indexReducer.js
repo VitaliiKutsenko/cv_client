@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { cvAllUserFields } from './cv/userCvFields/cvAllUserFieldsReducer';
+import { cvAllUserFields } from './cv/menuFields/cvAllUserFieldsReducer';
 import { userCv } from './cv/userCv/userCvReducer';
 import { auth } from './auth/authReducers';
 import { loader } from './loader/loaderReducer';

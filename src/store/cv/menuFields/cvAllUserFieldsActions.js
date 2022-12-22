@@ -1,5 +1,4 @@
 import {
-  FETCH_USER_FIELDS,
   RESPONSE_USER_FIELDS_DENIED,
   RESPONSE_USER_FIELDS_SUCCESS,
   ADD_FIELDS,
@@ -8,18 +7,11 @@ import {
   SET_USER_CARD,
 } from './cvAllUserFieldsActionTypes';
 
-export const fetchAllUserFields = payload => {
-  return {
-    type: FETCH_USER_FIELDS,
-    payload,
-  };
-};
-
-export const getAllUserFieldsSuccess = payload => ({
+export const menuFieldsSuccess = payload => ({
   type: RESPONSE_USER_FIELDS_SUCCESS,
   payload,
 });
-export const getAllUserFieldsDenied = payload => ({
+export const menuFieldsDenied = payload => ({
   type: RESPONSE_USER_FIELDS_DENIED,
   payload,
 });

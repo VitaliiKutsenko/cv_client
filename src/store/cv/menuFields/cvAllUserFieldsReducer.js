@@ -34,9 +34,7 @@ export const cvAllUserFields = (state = initialState, { type, payload }) => {
     case RESPONSE_USER_FIELDS_SUCCESS:
       return {
         ...state,
-        // ...cvReducerServices.mergedLocalFieldsWithApi(payload),
         ...payload.data,
-        success: true,
       };
 
     case RESPONSE_USER_FIELDS_DENIED:

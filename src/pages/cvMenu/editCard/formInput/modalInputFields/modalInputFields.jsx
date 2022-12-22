@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useFormContext } from 'react-hook-form';
 import { ModalInputFieldsWrapper } from './modalInputFieldsStyled';

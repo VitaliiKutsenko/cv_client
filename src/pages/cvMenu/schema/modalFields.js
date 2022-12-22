@@ -24,10 +24,13 @@ export const modalFieldsSchema = {
       fields: [
         fieldCreator('Company'),
         fieldCreator('Position', { multi: true }),
+        fieldCreator('Start work', {
+          date: true,
+          labelName: 'Working period',
+        }),
+        fieldCreator('End work', { date: true }),
         fieldCreator('Responsibilities', { multi: true }),
         fieldCreator('Location'),
-        fieldCreator('Start work', { date: true }),
-        fieldCreator('End work', { date: true }),
       ],
     },
   ],
@@ -100,7 +103,7 @@ export const modalFieldsSchema = {
         fieldCreator('Start education', { date: true }),
         fieldCreator('End education', {
           date: true,
-          labelName: 'Working period',
+          labelName: 'Education period',
         }),
       ],
     },

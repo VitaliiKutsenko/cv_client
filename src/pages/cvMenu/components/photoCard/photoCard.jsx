@@ -57,7 +57,7 @@ export const PhotoCard = ({ collectionId }) => {
       />
 
       <PhotoCardPreview>
-        {userImage && <img alt="hello" src={`${API_URL}/${userImage?.image?.url}`} />}
+        {userImage && <img alt="hello" src={`${userImage?.image?.url}`} />}
       </PhotoCardPreview>
       <PhotoCard_loadField>
         <button onClick={() => loadRef.current.click()}>Upload</button>
