@@ -3,19 +3,15 @@ import { CardList, CardListContainer, CvCardFieldsWrapper, DateList } from './cv
 
 export const CvCardFields = ({ cardFields, options, setFieldsState, label, path }) => {
   const { name, values, fieldOptions } = cardFields;
-
   const renderCvCardFields = () => {
     return values.map(item => {
-      if (cardFields.date) {
-        const dateParse = new Date(item.value).toLocaleString().split(',')[0];
-
-        return <CardList key={item.value}>{dateParse}</CardList>;
-      }
-
+      // if (!cardFields.date) {
       return <CardList key={item.value}>{item.value}</CardList>;
+      // }
     });
   };
 
+  // console.log(date);
   const handleFieldData = () => {
     if (setFieldsState) {
       setFieldsState(cardFields);
@@ -30,6 +26,7 @@ export const CvCardFields = ({ cardFields, options, setFieldsState, label, path 
       className={path}
     >
       {label !== name.toUpperCase() && <div className="label">{name}:</div>}
+
       <CardListContainer options={options}>{renderCvCardFields()}</CardListContainer>
     </CvCardFieldsWrapper>
   );

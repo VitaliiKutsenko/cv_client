@@ -27,5 +27,8 @@ export const selectUserCards = createSelector([localCv, userCv], (local, user) =
     });
   });
 
-  return { ...data };
+  return {
+    ...local,
+    ...user,
+  };
 });

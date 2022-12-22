@@ -11,7 +11,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 const isDev = !isProd;
-const filename = item => (isDev ? `[name].${item}` : `[name].[hash].${item}`);
+const filename = item => (isDev ? `[name].${item}` : `[name].[fullhash].${item}`);
 const optimization = () => {
   const config = { splitChunks: { chunks: 'all' } };
 
@@ -45,7 +45,7 @@ const plugins = () => {
       patterns: [
         {
           from: path.resolve(__dirname, 'public/favicon.ico'),
-          to: path.resolve(__dirname, 'dist'),
+          to: path.resolve(__dirname, 'build'),
         },
       ],
     }),
@@ -125,7 +125,7 @@ module.exports = {
   },
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    path: path.resolve(__dirname, 'build'),
+    // publicPath: '/cv_client/',
   },
 };

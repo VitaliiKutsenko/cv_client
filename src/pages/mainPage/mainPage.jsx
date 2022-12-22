@@ -19,6 +19,10 @@ const MainPage = ({}) => {
     return <Navigate to={`/${auth.data.username}`} />;
   }
 
+  // if (!auth.success) {
+  //   return <Navigate to="/" />;
+  // }
+
   if (!auth.success) {
     return (
       <MainPageWrapper>

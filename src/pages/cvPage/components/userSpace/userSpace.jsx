@@ -9,7 +9,6 @@ import UserSpaceContext from '../../../../context/context';
 
 export const UserSpace = ({ children }) => {
   const auth = useSelector(store => store.auth.checkAuth || {});
-  const navigate = useNavigate();
   const [edit, setEdit] = useState('false');
 
   if (auth.success) {

@@ -24,7 +24,7 @@ const Cv = () => {
         })
       );
     }
-  }, [userCv.success]);
+  }, []);
 
   if (userCv.success) {
     return (
@@ -35,7 +35,6 @@ const Cv = () => {
             <CvRightColumn content={rightColumn} />
           </CvMainWrapper>
         </UserSpace>
-
         <Outlet />
       </CvWrapper>
     );

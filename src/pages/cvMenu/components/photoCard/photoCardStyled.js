@@ -2,24 +2,27 @@ import styled from 'styled-components';
 
 export const PhotoCardWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: white;
 `;
 export const PhotoCardPreview = styled.div`
   & .fill {
-    padding: 10px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    margin-top: 10px;
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+    //clip-path: circle(40%);
+
+    overflow: hidden;
   }
-  & .fill img {
+  & .avatar {
+    max-width: 300px;
+    width: 100%;
     object-fit: cover;
-    width: 200px;
-    max-height: 200px;
-    border-radius: 50%;
   }
 `;
 export const PhotoCard_loadField = styled.div`

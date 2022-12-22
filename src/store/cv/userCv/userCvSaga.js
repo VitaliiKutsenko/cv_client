@@ -9,6 +9,7 @@ import {
   removeCvField,
   removeCvFieldSuccess,
 } from './userCvActions';
+import { menuFieldsDenied, menuFieldsSuccess } from '../menuFields/cvAllUserFieldsActions';
 
 export function* userCvWatcher() {
   yield takeEvery(FETCH_USER_CV, getUserCvSaga);
@@ -21,8 +22,10 @@ export function* getUserCvSaga({ payload }) {
     const data = yield call(getAllUserFields, payload);
 
     yield put(fetchUserCvSuccess(data));
+    yield put(menuFieldsSuccess(data));
   } catch (error) {
     yield put(rejectUserCv(error));
+    yield put(menuFieldsDenied(error));
   }
 }
 

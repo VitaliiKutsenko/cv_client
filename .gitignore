@@ -5,7 +5,7 @@
 
 # Node artifact files
 node_modules/
-dist/
+build/
 README.md
 package-lock.json
 # Compiled Java class files

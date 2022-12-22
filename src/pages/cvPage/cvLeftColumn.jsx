@@ -13,9 +13,18 @@ export const CvLeftColumn = ({ content }) => {
 export const CvLeftColumnWrapper = styled.ul`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  //background: rgba(0, 139, 139, 0.57);
+  width: 30%;
+  min-width: 250px;
   height: 100%;
   margin: 10px 10px 0px 10px;
-  padding: 10px;
+  //padding: 10px;
   gap: 10px;
+  @media (max-width: 1000px) {
+    & {
+      width: 100%;
+      margin: 0;
+      padding: 10px;
+    }
+  }
 `;

@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addAdditionalField,
   removeAdditionalField,
-} from '../../../../store/cv/userCvFields/cvAllUserFieldsActions';
-import { selectUserCards } from '../../../../store/cv/userCvFields/cvAlluserFieldsSelector';
+} from '../../../../store/cv/menuFields/cvAllUserFieldsActions';
+import { selectUserCards } from '../../../../store/cv/menuFields/cvAlluserFieldsSelector';
 import { addCvField, removeCvField } from '../../../../store/cv/userCv/userCvActions';
 import { PhotoCard } from '../photoCard/photoCard';
 

@@ -28,8 +28,8 @@ const Auth = () => {
       <AuthToolBar>
         <Routes>
           <Route index element={<Login setErrors={setErrors} errors={errors} svg={true} />} />
-          <Route path="/registration" element={<LazySignUp setErrors={setErrors} />} />
-          <Route path="/forgot-password" element={<ResetPassword setErrors={setErrors} />} />
+          <Route path="registration" element={<LazySignUp setErrors={setErrors} />} />
+          <Route path="forgot-password" element={<ResetPassword setErrors={setErrors} />} />
         </Routes>
       </AuthToolBar>
     </AuthLayoutWrapper>
