@@ -6,7 +6,9 @@ export const RenderCards = ({ content }) => {
     return Object.entries(data || []).map(item => {
       const [path, values] = item;
 
-      return values.map(item => {
+      const sortCvField = values.sort((a, b) => a.id - b.id);
+
+      return sortCvField.map(item => {
         return (
           <CvCard
             key={`${path}_${item.id}`}

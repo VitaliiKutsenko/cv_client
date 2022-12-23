@@ -1,12 +1,11 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { deleteUserField, getAllUserFields, postUserCvField } from '../../../api/cv/apiUserCv';
 import { FETCH_USER_CV, ADD_CV_FIELD, REMOVE_CV_FIELD } from './userCvActionTypes';
+import { cv } from '../../../api/cv/apiUserCv';
 import {
   addCvFieldSuccess,
-  fetchUserCv,
   fetchUserCvSuccess,
   rejectUserCv,
-  removeCvField,
   removeCvFieldSuccess,
 } from './userCvActions';
 import { menuFieldsDenied, menuFieldsSuccess } from '../menuFields/cvAllUserFieldsActions';
@@ -19,7 +18,7 @@ export function* userCvWatcher() {
 
 export function* getUserCvSaga({ payload }) {
   try {
-    const data = yield call(getAllUserFields, payload);
+    const data = yield call(cv.get.userField, payload);
 
     yield put(fetchUserCvSuccess(data));
     yield put(menuFieldsSuccess(data));
@@ -31,7 +30,7 @@ export function* getUserCvSaga({ payload }) {
 
 export function* postUserCvFieldSaga({ payload }) {
   try {
-    const data = yield call(postUserCvField, payload);
+    const data = yield call(cv.post.userField, payload);
 
     yield put(addCvFieldSuccess(data));
   } catch (error) {
@@ -41,7 +40,7 @@ export function* postUserCvFieldSaga({ payload }) {
 
 export function* removeUserCvSaga({ payload }) {
   if (payload.id) {
-    const data = yield call(deleteUserField, payload);
+    const data = yield call(cv.delete.userField, payload);
 
     try {
       yield put(removeCvFieldSuccess(data));

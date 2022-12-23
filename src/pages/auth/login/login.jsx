@@ -13,11 +13,8 @@ export const Login = ({ svg }) => {
   const login = useSelector(store => store.auth.login);
   const navigate = useNavigate();
 
-  console.log(login);
-
   useEffect(() => {
     if (login.success?.user?.username) {
-      console.log(1);
       navigate(`${login.success?.user?.username}`);
     }
   }, [login.success]);

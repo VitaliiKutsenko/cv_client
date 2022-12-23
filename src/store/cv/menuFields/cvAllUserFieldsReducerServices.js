@@ -30,7 +30,6 @@ export const cvReducerServices = {
     return { [payload.path]: [...state[payload.path].filter(field => field.id !== payload.id)] };
   },
   mergedLocalFieldsWithApi(payload) {
-    console.log(payload);
     //   const fields = payload?.data;
     //   const successFields = {};
     //

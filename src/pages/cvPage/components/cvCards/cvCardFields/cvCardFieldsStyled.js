@@ -16,8 +16,7 @@ export const CvCardFieldsWrapper = styled.li`
 
   & .label {
     padding: 5px;
-    width: 30%;
-    min-width: fit-content;
+    min-width: 30%;
     display: flex;
     align-self: flex-start;
     height: 100%;
@@ -44,17 +43,16 @@ export const CvCardFieldsWrapper = styled.li`
     box-shadow: 0 0 1px 1px rgba(116, 116, 116, 0.5);
     align-items: center;
     border-radius: 5px;
-    &:nth-child(6) {
-      flex-direction: column;
 
-      & ol {
-        margin-left: 10px;
-        align-self: flex-start;
+    &.responsibilities {
+      display: flex;
+      flex-direction: row;
+      & .label {
+        height: 100%;
       }
-
-      & ol li:before {
+      li:before {
         left: -10px;
-        top: calc(15px / 2);
+        top: calc(50% - 5px / 2);
         content: '';
         position: absolute;
         width: 5px;
@@ -73,6 +71,7 @@ export const CvCardFieldsWrapper = styled.li`
       & li {
         position: relative;
         box-shadow: none;
+        margin: 0;
       }
     }
   }
@@ -100,7 +99,11 @@ export const CvCardFieldsWrapper = styled.li`
       }
     }
   }
-
+  &.soft_skills {
+    & ol li {
+      box-shadow: 0 0 1px 1px rgba(116, 116, 116, 0.5);
+    }
+  }
   &.education {
     box-shadow: 0 0 1px 1px rgba(116, 116, 116, 0.5);
     border-radius: 5px;

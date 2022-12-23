@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { CardList, CardListContainer, CvCardFieldsWrapper, DateList } from './cvCardFieldsStyled';
 
 export const CvCardFields = ({ cardFields, options, setFieldsState, label, path }) => {
   const { name, values, fieldOptions } = cardFields;
+  const listClassNameCreator = useMemo(() => name.toLowerCase().split(' ').join('_'), [name]);
   const renderCvCardFields = () => {
     return values.map(item => {
-      // if (!cardFields.date) {
       return <CardList key={item.value}>{item.value}</CardList>;
-      // }
     });
   };
 
-  // console.log(date);
   const handleFieldData = () => {
     if (setFieldsState) {
       setFieldsState(cardFields);
@@ -23,7 +21,7 @@ export const CvCardFields = ({ cardFields, options, setFieldsState, label, path 
       fieldOptions={fieldOptions}
       onClick={handleFieldData}
       setFieldsState={setFieldsState}
-      className={path}
+      className={`${path} ${listClassNameCreator}`}
     >
       {label !== name.toUpperCase() && <div className="label">{name}:</div>}
 
