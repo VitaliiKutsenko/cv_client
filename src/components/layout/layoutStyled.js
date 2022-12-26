@@ -7,5 +7,6 @@ export const MainWrapper = styled.div`
 export const OutletWrapper = styled.div`
   position: relative;
   width: 100%;
+  top: 60px;
   height: calc(100vh - 60px);
 `;
