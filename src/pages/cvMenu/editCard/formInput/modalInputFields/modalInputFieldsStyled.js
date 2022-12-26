@@ -4,7 +4,6 @@ import { theme } from '../../../../../style/theme/theme';
 export const ModalInputFieldsWrapper = styled.li`
   margin: 10px 0;
   display: flex;
-  align-items: center;
   width: 80%;
   & .input_wrapper {
     display: flex;

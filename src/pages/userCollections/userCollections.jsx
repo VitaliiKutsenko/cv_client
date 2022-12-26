@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
-
 import { CollectionsWindow, CvCollectionsWrapper } from './userCollectionsStyled';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { CollectionsToolbar } from './components/collectionsToolbar';
 import { ModalWindow } from '../../modals/modalWindow';
 import {
@@ -26,7 +24,7 @@ const UserCollections = ({}) => {
     if (!collections.error) {
       collectionDispatch(fetchAllCollections());
     }
-  }, [collections.error]);
+  }, []);
 
   const renderCollections = useMemo(() => {
     return collections.collections.map(item => {

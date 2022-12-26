@@ -14,6 +14,8 @@ export const modalTheme = {
   background: 'rgba(109, 109, 109, 0.5)',
   backdropFilter: 'blur(3px)',
 };
+export const accentColor = { color: 'coral' };
+
 export const theme = {
   border: '10px',
   colors,
@@ -22,4 +24,5 @@ export const theme = {
   buttons,
   modalTheme,
   auth,
+  accentColor,
 };

@@ -2,43 +2,31 @@ import styled, { keyframes } from 'styled-components';
 import { theme } from '../../../style/theme/theme';
 
 export const ModalFormWrapper = styled.div`
-  height: fit-content;
-  width: content-box;
-  margin-bottom: 10px;
-  background: white;
-  border-radius: ${theme.border};
-  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
-
+//height:100%;
+//width: 100%;
   & form {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     width: 100%;
-    height: fit-content;
-    background: linear-gradient(to left bottom, ${({ color }) => color || 'grey'}, ${props =>
-  props.themes} 50%);
-    border-radius: 0 0 10px 10px;
-    padding: 10px;
-    position: relative;
-    transition: 0.3s linear;
-
-    &.hide {
-      opacity: 0;
-      transition: 0.3s linear;
-    }
-
-    &.show {
-      opacity: 1;
-      transition: 0.3s linear;
-    }
-
+    height: 100%;
+    overflow: scroll;
+    
+    
     & ul {
-      width: 100%;
-      height: fit-content;
-      overflow: visible;
+      //width: 100%;
+      //height: 100%;
+
+      //height: content-box;
+      //max-height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      //flex-wrap: wrap;
     }
 
     & .form_button__wrapper {
-      margin-top: 20px;
+      //margin-top: 20px;
       display: flex;
       align-items: center;
       justify-content: flex-end;

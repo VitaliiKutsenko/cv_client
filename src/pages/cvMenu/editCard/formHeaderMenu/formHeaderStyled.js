@@ -10,24 +10,17 @@ export const FormHeaderWrapper = styled.div.attrs(props => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(
-    to right bottom,
-    white 20%,
-
-    ${({ color }) => color || 'gray'}
-  );
-  border-radius: ${props => props.borderRadius || 0};
-
+  border-radius: 3px;
   & .header_label {
     margin: 10px;
   }
 
   & .button_menu {
     display: flex;
-    padding: 5px;
+    //padding: 5px;
 
     & button {
-      margin: 10px;
+      margin: 5px 10px;
       border-radius: ${theme.border || 0};
 
       &:hover svg {

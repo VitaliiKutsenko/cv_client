@@ -3,11 +3,12 @@ import { theme } from '../../style/theme/theme';
 
 export const CvWrapper = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  //background: ${theme.colors.mateWhite};
-  background: linear-gradient(to left, white, rgba(165, 165, 165, 0.49));
+  justify-content: center;
+  background: ${theme.colors.mateWhite};
 `;
 export const CvMainWrapper = styled.div`
   display: flex;

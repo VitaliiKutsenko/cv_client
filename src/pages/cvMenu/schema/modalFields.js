@@ -129,7 +129,13 @@ export const modalFieldsSchema = {
           id: 2,
         },
       },
-      fields: [fieldCreator('About my self', { multi: true })],
+      fields: [
+        fieldCreator('NAME'),
+        fieldCreator('SURNAME'),
+        fieldCreator('BIRTHDAY'),
+        fieldCreator('JOB'),
+        fieldCreator('LOCATION'),
+      ],
     },
   ],
 };

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const NavLinksWrapper = styled.div`
   padding: 2px;
-  min-width: fit-content;
+  max-width: fit-content;
   height: fit-content;
   position: relative;
   display: flex;
@@ -11,6 +11,7 @@ export const NavLinksWrapper = styled.div`
   align-items: center;
   overflow: hidden;
   & a {
+    position: relative;
     font-size: 18px;
     text-decoration: none;
     color: ${({ color }) => color || 'rgba(0,0,0,0.5)'};
@@ -26,7 +27,6 @@ export const NavLinksWrapper = styled.div`
   & a::before {
     content: '';
     width: 0;
-    height: 100%;
     border-bottom: 2px inset ${({ color }) => color || 'rgba(0,0,0,0.2)'};
     bottom: 0;
     position: absolute;

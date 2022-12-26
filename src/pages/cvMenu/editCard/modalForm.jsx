@@ -47,14 +47,13 @@ export const ModalForm = ({
 
   return (
     <FormProvider {...formMethods}>
-      <ModalFormWrapper themes={theme}>
-        <FormHeader
-          id={id}
-          themes={theme}
-          label={labelText}
-          handleAdditionalField={handleAdditionalField}
-          handleRemoveAdditionalField={handleRemoveAdditionalField}
-        />
+      <ModalFormWrapper>
+        {/*<FormHeader*/}
+        {/*  id={id}*/}
+        {/*  label={labelText}*/}
+        {/*  handleAdditionalField={handleAdditionalField}*/}
+        {/*  handleRemoveAdditionalField={handleRemoveAdditionalField}*/}
+        {/*/>*/}
         <form onSubmit={handleSubmit(getSubmitData)}>
           <ul>{renderEditCards(fields)}</ul>
           <div className="form_button__wrapper">

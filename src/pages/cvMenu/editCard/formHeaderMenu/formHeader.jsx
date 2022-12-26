@@ -7,15 +7,9 @@ import SettingsField from '../../../../../public/svg_modal/SettingsField.svg';
 
 import { FormHeaderWrapper } from './formHeaderStyled';
 
-export const FormHeader = ({
-  handleAdditionalField,
-  handleRemoveAdditionalField,
-  label,
-  themes,
-  id,
-}) => {
+export const FormHeader = ({ handleAdditionalField, handleRemoveAdditionalField, label, id }) => {
   return (
-    <FormHeaderWrapper themes={themes}>
+    <FormHeaderWrapper>
       <div className="header_label">
         <span>{label}</span>
       </div>

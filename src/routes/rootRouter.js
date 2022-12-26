@@ -2,10 +2,11 @@ import React from 'react';
 import { createHashRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import { ErrorPage } from '../components/errorPage/errorPage';
 import { Layout } from '../components/layout/layout';
-import CvMenu from '../pages/cvMenu/cvMenu';
+// import CvMenu from '../pages/cvMenu/cvMenu';
 import Auth from '../pages/auth/authLayout';
 import { LazyMainPage, LazyUserCollections, LazyUserPage, LazyCv } from './lazyRoutes';
 import { CvOptions } from '../pages/cvOptions/cvOptions';
+import CvMenu_v2 from '../pages/cv_v2/menu_v2/cvMenu_v2';
 
 export const rootRouter = createHashRouter(
   createRoutesFromElements(
@@ -18,7 +19,7 @@ export const rootRouter = createHashRouter(
         <Route path="comments" element={<LazyUserCollections />} />
       </Route>
       <Route path=":username/:name/*" element={<LazyCv />}>
-        <Route path="menu/*" element={<CvMenu />} />
+        <Route path="menu/:path/*" element={<CvMenu_v2 />} />
         <Route path="options/*" element={<CvOptions />} />
       </Route>
 

@@ -64,5 +64,5 @@ export const ModalListWindow = ({ path, collectionId }) => {
     }
   };
 
-  return <ModalListWindowWrapper>{renderForm()}</ModalListWindowWrapper>;
+  return <div> {renderForm()}</div>;
 };

@@ -7,6 +7,7 @@ import { UserSpace } from './components/userSpace/userSpace';
 import { selectUserCv } from '../../selectors/userCvSelectors';
 import { CvLeftColumn } from './cvLeftColumn';
 import { CvRightColumn } from './cvRightColumn';
+import { CvPage } from '../cv_v2/cvPage';
 
 const Cv = () => {
   const { username, name } = useParams();
@@ -29,12 +30,7 @@ const Cv = () => {
   if (userCv.success) {
     return (
       <CvWrapper>
-        <UserSpace>
-          <CvMainWrapper>
-            <CvLeftColumn content={leftColumn} />
-            <CvRightColumn content={rightColumn} />
-          </CvMainWrapper>
-        </UserSpace>
+        <CvPage />
         <Outlet />
       </CvWrapper>
     );
