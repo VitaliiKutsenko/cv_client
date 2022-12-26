@@ -12,7 +12,13 @@ export const CvWrapper = styled.div`
 export const CvMainWrapper = styled.div`
   display: flex;
   width: 70%;
-  @media (max-width: 1000px) {
+  height: 100%;
+
+  @page {
+    size: A4;
+  }
+
+  @media (max-width: 700px) {
     & {
       width: 100%;
       flex-direction: column;
