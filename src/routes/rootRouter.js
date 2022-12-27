@@ -6,7 +6,7 @@ import { Layout } from '../components/layout/layout';
 import Auth from '../pages/auth/authLayout';
 import { LazyMainPage, LazyUserCollections, LazyUserPage, LazyCv } from './lazyRoutes';
 import { CvOptions } from '../pages/cvOptions/cvOptions';
-import CvMenu_v2 from '../pages/cv_v2/menu_v2/cvMenu_v2';
+import CvMenu_v2 from '../features/cvMenu/cvMenu_v2';
 
 export const rootRouter = createHashRouter(
   createRoutesFromElements(

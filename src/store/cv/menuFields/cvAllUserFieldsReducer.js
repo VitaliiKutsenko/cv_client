@@ -6,7 +6,7 @@ import {
   ADD_NEW_FIELD,
   REMOVE_NEW_FIELD,
 } from './cvAllUserFieldsActionTypes';
-import { modalFieldsSchema } from '../../../pages/cvMenu/schema/modalFields';
+import { modalFieldsSchema } from '../../../features/cvMenu/schema/modalFields';
 import { cvReducerServices } from './cvAllUserFieldsReducerServices';
 
 const initialState = { ...modalFieldsSchema };

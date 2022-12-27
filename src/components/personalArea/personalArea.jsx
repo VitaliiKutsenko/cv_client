@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PersonalAreaWrapper } from './personalAreaStyled';
-import { ModalWindow } from '../../modals/modalWindow';
+import { ModalWindow } from '../modals/modalWindow';
 import { PersonalAreaList } from './personalAreaList/personalAreaList';
 import ProfileDefault from '../../../public/svg/ProfileDefault.svg';
 

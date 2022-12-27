@@ -4,7 +4,7 @@ import { loginFields } from './loginFields';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthWrapper, SvgContainer } from '../authStyle';
 import { clearLoginStore, setLoginFields } from '../../../store/auth/login/loginActions';
-import { ErrorModal } from '../../../modals/errorModals/errorModal';
+import { ErrorModal } from '../../../components/modals/errorModals/errorModal';
 import LoginSvg from '../../../../public/svg/Login.svg';
 import { useNavigate } from 'react-router-dom';
 

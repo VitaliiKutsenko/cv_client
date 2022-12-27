@@ -7,7 +7,7 @@ import { UserSpace } from './components/userSpace/userSpace';
 import { selectUserCv } from '../../selectors/userCvSelectors';
 import { CvLeftColumn } from './cvLeftColumn';
 import { CvRightColumn } from './cvRightColumn';
-import { CvPage } from '../cv_v2/cvPage';
+import { CvPage } from '../../features/cvPage/cvPage';
 
 const Cv = () => {
   const { username, name } = useParams();

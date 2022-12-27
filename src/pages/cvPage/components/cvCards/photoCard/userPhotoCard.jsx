@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserPhotoCardWrapper } from './userPhotoCardStyled';
-import { PhotoCardPreview } from '../../../../cvMenu/components/photoCard/photoCardStyled';
+import { PhotoCardPreview } from '../../../../../features/cvMenu/components/photoCard/photoCardStyled';
 
 export const UserPhotoCard = ({ cardFields }) => {
   return (

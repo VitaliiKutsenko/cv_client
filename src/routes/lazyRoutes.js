@@ -3,7 +3,7 @@ import { Loader } from '../components/loader/loader';
 import { PrivateRoutes } from './private/privateRoutes';
 
 const MainPage = lazy(() => import('./../pages/mainPage/mainPage'));
-const UserCollections = lazy(() => import('../pages/userCollections/userCollections'));
+const UserCollections = lazy(() => import('../pages/cvCollections/userCollections'));
 const Cv = lazy(() => import('../pages/cvPage/cv'));
 const UserPage = lazy(() => import('../pages/userPage/userPage'));
 const Auth = lazy(() => import('../pages/auth/authLayout'));

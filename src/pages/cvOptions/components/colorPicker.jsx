@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { ChromePicker } from 'react-color';
 import Background_SVG from '../../../../public/svg_options/Background_SVG.svg';
 import { ColorPickerWrapper } from '../cvOptionsStyled';
-import { ModalWindow } from '../../../modals/modalWindow';
+import { ModalWindow } from '../../../components/modals/modalWindow';
 
 export const ColorPicker = ({ options, setOptions }) => {
   const [color, setColor] = useState('#fff');

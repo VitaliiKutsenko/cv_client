@@ -10,7 +10,7 @@ import {
 } from '../../../store/auth/registration/registrationActions';
 import SignUpSvg from '../../../../public/svg/SignUp.svg';
 import { fetchCheckAuth } from '../../../store/auth/checkAuth/checkAuthActions';
-import { ErrorModal } from '../../../modals/errorModals/errorModal';
+import { ErrorModal } from '../../../components/modals/errorModals/errorModal';
 import { clearLoginStore } from '../../../store/auth/login/loginActions';
 import { CustomLink } from '../../../components/customLinks/customLink';
 

@@ -8,14 +8,9 @@ import { MainPageAuth } from './components/mainPageAuth';
 const MainPage = ({}) => {
   const auth = useSelector(store => store.auth.checkAuth);
 
-  // if (auth.success) {
-  //   return <Navigate to={`/${auth.data.username}`} />;
-  // }
-
-  console.log(auth);
-  // if (!auth.success) {
-  //   return <Navigate to="/" />;
-  // }
+  if (auth.success) {
+    return <Navigate to={`/${auth.data.username}`} />;
+  }
 
   if (!auth.success) {
     return (
