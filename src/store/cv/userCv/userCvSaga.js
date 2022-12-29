@@ -1,5 +1,4 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
-import { deleteUserField, getAllUserFields, postUserCvField } from '../../../api/cv/apiUserCv';
 import { FETCH_USER_CV, ADD_CV_FIELD, REMOVE_CV_FIELD } from './userCvActionTypes';
 import { cv } from '../../../api/cv/apiUserCv';
 import {
@@ -9,6 +8,7 @@ import {
   removeCvFieldSuccess,
 } from './userCvActions';
 import { menuFieldsDenied, menuFieldsSuccess } from '../menuFields/cvAllUserFieldsActions';
+import { toggleLoader } from '../../loader/loaderActions';
 
 export function* userCvWatcher() {
   yield takeEvery(FETCH_USER_CV, getUserCvSaga);
@@ -17,6 +17,7 @@ export function* userCvWatcher() {
 }
 
 export function* getUserCvSaga({ payload }) {
+  yield put(toggleLoader(true));
   try {
     const data = yield call(cv.get.userField, payload);
 
@@ -26,6 +27,8 @@ export function* getUserCvSaga({ payload }) {
     yield put(rejectUserCv(error));
     yield put(menuFieldsDenied(error));
   }
+
+  yield put(toggleLoader(false));
 }
 
 export function* postUserCvFieldSaga({ payload }) {

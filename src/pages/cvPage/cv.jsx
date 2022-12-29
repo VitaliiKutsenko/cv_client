@@ -8,12 +8,14 @@ import { selectUserCv } from '../../selectors/userCvSelectors';
 import { CvLeftColumn } from './cvLeftColumn';
 import { CvRightColumn } from './cvRightColumn';
 import { useReactToPrint } from 'react-to-print';
+import { Loader } from '../../components/loader/loader';
 
 const Cv = () => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({ content: () => componentRef.current });
   const { username, name } = useParams();
-  const userCv = useSelector(store => store.userCv || {});
+  const { loader } = useSelector(store => store.loader || {});
+
   const { rightColumn, leftColumn } = useSelector(selectUserCv);
 
   const fetchAllCvDispatch = useDispatch();
@@ -27,22 +29,26 @@ const Cv = () => {
         })
       );
     }
-  }, []);
+  }, [fetchAllCvDispatch]);
 
-  if (userCv.success) {
-    return (
-      <CvWrapper>
-        <button onClick={handlePrint}>Print</button>
-        <UserSpace>
-          <CvMainWrapper ref={componentRef}>
-            <CvLeftColumn content={leftColumn} />
-            <CvRightColumn content={rightColumn} />
-          </CvMainWrapper>
-        </UserSpace>
-        <Outlet />
-      </CvWrapper>
-    );
-  }
+  return (
+    <>
+      {loader ? (
+        <Loader />
+      ) : (
+        <CvWrapper>
+          {/*<button onClick={handlePrint}>Print</button>*/}
+          <UserSpace>
+            <CvMainWrapper ref={componentRef}>
+              <CvLeftColumn content={leftColumn} />
+              <CvRightColumn content={rightColumn} />
+            </CvMainWrapper>
+          </UserSpace>
+          <Outlet />
+        </CvWrapper>
+      )}
+    </>
+  );
 };
 
 export default Cv;

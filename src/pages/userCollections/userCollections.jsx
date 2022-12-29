@@ -26,7 +26,7 @@ const UserCollections = ({}) => {
     if (!collections.error) {
       collectionDispatch(fetchAllCollections());
     }
-  }, [collections.error]);
+  }, [collectionDispatch]);
 
   const renderCollections = useMemo(() => {
     return collections.collections.map(item => {

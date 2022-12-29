@@ -3,7 +3,6 @@ import { PhotoCard_loadField, PhotoCardPreview, PhotoCardWrapper } from './photo
 import { FormHeader } from '../../editCard/formHeaderMenu/formHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadUserImage } from '../../../../store/cv/userImage/userImageActions';
-import { API_URL } from '../../../../api/api.config';
 import { addCvField } from '../../../../store/cv/userCv/userCvActions';
 
 export const PhotoCard = ({ collectionId }) => {

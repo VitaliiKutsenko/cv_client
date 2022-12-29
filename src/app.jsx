@@ -7,15 +7,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCheckAuth } from './store/auth/checkAuth/checkAuthActions';
 
 export const App = () => {
-  const checkAuthDispatch = useDispatch();
-
-  const auth = useSelector(store => store.auth.checkAuth);
-
-  useEffect(() => {
-    if (!auth.success) {
-      checkAuthDispatch(fetchCheckAuth());
-    }
-  }, []);
+  // const checkAuthDispatch = useDispatch();
+  //
+  // const auth = useSelector(store => store.auth.checkAuth);
+  //
+  // useEffect(() => {
+  //   if (!auth.success) {
+  //     checkAuthDispatch(fetchCheckAuth());
+  //   }
+  // }, []);
 
   return (
     <>

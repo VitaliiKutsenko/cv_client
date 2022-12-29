@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// export const API_URL = `https://cv-server-taupe.vercel.app/api`;
-export const API_URL = `http://localhost:5000/api`;
+export const API_URL = `https://cv-server-taupe.vercel.app/api`;
+// export const API_URL = `http://localhost:5000/api`;
 
 export const $api = axios.create({
   baseURL: API_URL,
@@ -15,7 +15,9 @@ $api.interceptors.request.use(async config => {
 });
 
 export const promiseSuccess = () => {
-  return ({ data }) => ({ ...data });
+  return ({ data }) => {
+    return { ...data };
+  };
 };
 
 export const promiseReject = () => {
