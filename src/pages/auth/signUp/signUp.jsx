@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormComponent } from '../components/formComponent/formComponent';
 import { signUpFields } from './signUpFields';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AuthWrapper, SvgContainer } from '../authStyle';
 import {
   resetRegistration,
   setRegistrationFields,
 } from '../../../store/auth/registration/registrationActions';
 import SignUpSvg from '../../../../public/svg/SignUp.svg';
-import { fetchCheckAuth } from '../../../store/auth/checkAuth/checkAuthActions';
 import { ErrorModal } from '../../../components/modals/errorModals/errorModal';
-import { clearLoginStore } from '../../../store/auth/login/loginActions';
-import { CustomLink } from '../../../components/customLinks/customLink';
 
-export const SignUp = ({ setErrors }) => {
+export const SignUp = ({ setErrors, content }) => {
   const registrationDispatch = useDispatch();
   const registrationStore = useSelector(store => store.auth.registration || []);
 
@@ -45,9 +42,9 @@ export const SignUp = ({ setErrors }) => {
       <FormComponent
         components="signUp"
         setErrors={setErrors}
-        titleText="Sign up"
-        inputContent={signUpFields}
-        buttonText="Confirm"
+        titleText={content.titleText}
+        inputContent={content.signUpFields}
+        buttonText={content.buttonText}
         onSubmit={data => registrationDispatch(setRegistrationFields(data))}
       />
     </AuthWrapper>

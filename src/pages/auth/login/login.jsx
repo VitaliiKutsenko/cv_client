@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { FormComponent } from '../components/formComponent/formComponent';
-import { loginFields } from './loginFields';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthWrapper, SvgContainer } from '../authStyle';
 import { clearLoginStore, setLoginFields } from '../../../store/auth/login/loginActions';
 import { ErrorModal } from '../../../components/modals/errorModals/errorModal';
 import LoginSvg from '../../../../public/svg/Login.svg';
 import { useNavigate } from 'react-router-dom';
+import { CustomLink } from '../../../components/customLinks/customLink';
 
-export const Login = ({ svg }) => {
+export const Login = ({ svg, content }) => {
   const loginDispatch = useDispatch();
   const login = useSelector(store => store.auth.login);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,11 +48,15 @@ export const Login = ({ svg }) => {
 
       <FormComponent
         components="login"
-        inputContent={loginFields}
-        buttonText="Log in"
-        titleText="Log in"
-        onSubmit={data => loginDispatch(setLoginFields(data))}
-      ></FormComponent>
+        inputContent={content.loginFields}
+        buttonText={content.buttonText}
+        titleText={content.titleText}
+        onSubmit={data => {
+          loginDispatch(setLoginFields(data));
+        }}
+      >
+        {<CustomLink to={`/auth/reset_password`}>{content.forgotPassLink}</CustomLink>}
+      </FormComponent>
     </AuthWrapper>
   );
 };

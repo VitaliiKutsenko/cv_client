@@ -8,11 +8,13 @@ import {
   fetchAllCollections,
 } from '../../store/cv/userCollections/collectionsActions';
 import { Collection } from './components/collection';
+import { useParams } from 'react-router-dom';
 
 const UserCollections = ({}) => {
   const collectionDispatch = useDispatch();
   const collections = useSelector(store => store.collections || []);
   const [showInput, setShowInput] = useState(false);
+  const params = useParams();
 
   const createCollectionsHandler = collection => {
     if (collection.length > 0) {
@@ -21,9 +23,10 @@ const UserCollections = ({}) => {
   };
 
   useEffect(() => {
-    if (!collections.error) {
-      collectionDispatch(fetchAllCollections());
-    }
+    // if (!collections.error) {
+
+    collectionDispatch(fetchAllCollections());
+    // }
   }, []);
 
   const renderCollections = useMemo(() => {

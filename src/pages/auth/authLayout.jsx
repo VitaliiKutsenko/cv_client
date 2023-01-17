@@ -1,35 +1,39 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Registration } from './signUp/signUp';
 import { Login } from './login/login';
 import { ResetPassword } from './resetPassword/resetPassword';
-import { AuthLayoutWrapper, AuthToolbar } from './authStyle';
-import { ErrorModal } from './components/errorModal/errorModal';
-import { lazy, Suspense } from 'react';
-import { Loader } from '../../components/loader/loader';
-import { CustomLink } from '../../components/customLinks/customLink';
+import { AuthLayoutWrapper } from './authStyle';
 import { AuthToolBar } from './components/authToolBar';
-
-const SignUp = lazy(() => import('./signUp/signUp'));
-
-export const LazySignUp = () => {
-  return (
-    <Suspense fallback={<Loader />}>
-      <SignUp />
-    </Suspense>
-  );
-};
+import { useSelector } from 'react-redux';
+import SignUp from './signUp/signUp';
 
 const Auth = () => {
+  const authLanguages = useSelector(store => store.languages.initial.auth);
   const [errors, setErrors] = useState({ error: false });
 
   return (
     <AuthLayoutWrapper>
-      <AuthToolBar>
+      <AuthToolBar content={authLanguages}>
         <Routes>
-          <Route index element={<Login setErrors={setErrors} errors={errors} svg={true} />} />
-          <Route path="registration" element={<LazySignUp setErrors={setErrors} />} />
-          <Route path="forgot-password" element={<ResetPassword setErrors={setErrors} />} />
+          <Route
+            index
+            element={
+              <Login
+                setErrors={setErrors}
+                errors={errors}
+                svg={true}
+                content={authLanguages.login}
+              />
+            }
+          />
+          <Route
+            path="registration"
+            element={<SignUp setErrors={setErrors} content={authLanguages.signUp} />}
+          />
+          <Route
+            path="reset_password"
+            element={<ResetPassword setErrors={setErrors} content={authLanguages.resetPassword} />}
+          />
         </Routes>
       </AuthToolBar>
     </AuthLayoutWrapper>

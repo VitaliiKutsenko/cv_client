@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button } from '../../../../components/button/button';
 import { Input } from './input/input';
 import { FormFooter, FormWrapper, FormHeader } from './formComponentStyle';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import { validateForm } from '../../../../services/formValidator/validateService';
-import { logout } from '../../../../store/auth/logout/logoutReducer';
-import { CustomLink } from '../../../../components/customLinks/customLink';
 
 export const FormComponent = ({
   titleText,
@@ -30,7 +28,7 @@ export const FormComponent = ({
   const renderInput = inputs => {
     return inputs.map(input => {
       return (
-        <li key={input.labelText}>
+        <li key={input.point}>
           <Input
             components={components}
             control={control}
@@ -63,9 +61,7 @@ export const FormComponent = ({
       </FormHeader>
       <form onSubmit={handleSubmit(getSubmitData)}>
         <ul> {renderInput(inputContent)}</ul>
-        {components === 'login' && (
-          <CustomLink to={`/auth/forgot-password`}>Forgot password?</CustomLink>
-        )}
+        {children}
         <FormFooter>
           <Button components={components} type="submit" {...props}>
             {buttonText}

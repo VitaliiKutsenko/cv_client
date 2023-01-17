@@ -1,12 +1,12 @@
 import React from 'react';
 import { MainPageWrapper, MainPageNews } from './mainPageStyled';
 import { Navigate } from 'react-router-dom';
-import { Login } from '../auth/login/login';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { MainPageAuth } from './components/mainPageAuth';
 
 const MainPage = ({}) => {
   const auth = useSelector(store => store.auth.checkAuth);
+  const Languages = useSelector(store => store.languages.initial);
 
   if (auth.success) {
     return <Navigate to={`/${auth.data.username}`} />;
@@ -58,7 +58,7 @@ const MainPage = ({}) => {
             </li>
           </ul>
         </MainPageNews>
-        <MainPageAuth />
+        <MainPageAuth content={Languages.auth} />
       </MainPageWrapper>
     );
   }

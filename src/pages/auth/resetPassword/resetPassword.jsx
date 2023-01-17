@@ -6,7 +6,7 @@ import { AuthWrapper, SvgContainer } from '../authStyle';
 import { setResetPasswordFields } from '../../../store/auth/resetPassword/resetPasswordActions';
 import ForgotPassword from '../../../../public/svg/ForgotPassword.svg';
 
-export const ResetPassword = ({ setErrors }) => {
+export const ResetPassword = ({ setErrors, content }) => {
   const resetPasswordDispatch = useDispatch();
 
   return (
@@ -17,10 +17,10 @@ export const ResetPassword = ({ setErrors }) => {
       <FormComponent
         components="resetPassword"
         setErrors={setErrors}
-        titleText="Forgot your password?"
-        comments="Enter your username and we’ll send a link to reset your password."
-        inputContent={resetPasswordFields || {}}
-        buttonText="Reset password"
+        titleText={content.titleText}
+        comments={content.comments}
+        inputContent={content.resetPasswordFields || {}}
+        buttonText={content.buttonText}
         redirectButtonPath="/"
         onSubmit={data => resetPasswordDispatch(setResetPasswordFields(data)) || {}}
       />

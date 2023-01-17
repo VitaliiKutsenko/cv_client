@@ -6,9 +6,9 @@ import uniqid from 'uniqid';
 import PropTypes from 'prop-types';
 import { DataPicker } from '../../../../../components/dataPicker/dataPicker';
 
-export const Input = ({ inputType, labelText, register, control, errors, ...props }) => {
+export const Input = ({ inputType, point, labelText, register, control, errors, ...props }) => {
   const [iconState, setIconState] = useState(false);
-  const registerId = labelText.toLowerCase();
+  const registerId = point;
   const inputId = uniqid();
   const iconTrigger = e => {
     e.preventDefault();
@@ -27,7 +27,7 @@ export const Input = ({ inputType, labelText, register, control, errors, ...prop
         {inputType === 'date' ? (
           <DataPicker
             control={control}
-            name={labelText.toLowerCase()}
+            name={point}
             id={inputId}
             labelText={labelText}
             setFocus={setFocus}

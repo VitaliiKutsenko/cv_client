@@ -1,70 +1,57 @@
 import React from 'react';
-import styled from 'styled-components';
-
 import { Route, Routes, useParams } from 'react-router-dom';
 import { MenuControllers } from './menuControllers';
 import { MenuWindow } from './components/menuWindow';
 import { CustomLink } from '../../components/customLinks/customLink';
-
-const schema = { profile: ['about_my_self', 'photo', 'contact_info'] };
+import { menuSchema } from './schema/menuFields';
+import { MenuContent, MenuHeader, MenuWrapper } from './cvMenuStyled';
 
 const CvMenu_v2 = () => {
   const param = useParams();
   const renderLinks = () => {
-    return schema[param.path].map((link, index) => {
+    return menuSchema[param.path].map((link, index) => {
       return (
         <CustomLink
-          key={link}
-          text={link}
-          to={index === 0 ? `/${param.username}/${param.name}/menu/${param.path}` : link}
+          key={link.path}
+          text={link.path}
+          to={index === 0 ? `/${param.username}/${param.name}/menu/${param.path}` : link.path}
         />
       );
     });
   };
 
-  const renderRoute = () => {
-    return schema[param.path].map((link, index) => {
-      return (
-        <Route
-          key={link}
-          path={!index ? null : link}
-          index={!index}
-          element={<MenuControllers key={link} collectionId={param.name} path={link} />}
-        />
-      );
-    });
+  const renderRoutes = () => {
+    return (
+      <Routes>
+        {menuSchema[param.path].map((link, index) => {
+          return (
+            <Route
+              key={link.path}
+              path={!index ? null : link.path}
+              index={!index}
+              element={
+                <MenuControllers
+                  key={link.path}
+                  collectionId={param.name}
+                  path={link.path}
+                  svg={link.svg}
+                />
+              }
+            />
+          );
+        })}
+      </Routes>
+    );
   };
 
   return (
     <MenuWindow>
       <MenuWrapper>
         <MenuHeader>{renderLinks()}</MenuHeader>
-        <MenuContent>
-          <Routes>{renderRoute()}</Routes>
-        </MenuContent>
+        <MenuContent>{renderRoutes()}</MenuContent>
       </MenuWrapper>
     </MenuWindow>
   );
 };
 
 export default CvMenu_v2;
-
-export const MenuWrapper = styled.div`
-  width: 60%;
-  height: 80%;
-  background: white;
-  position: relative;
-`;
-export const MenuHeader = styled.nav`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  margin: 10px;
-`;
-export const MenuContent = styled.div`
-  display: flex;
-  width: 100%;
-  height: 90%;
-`;

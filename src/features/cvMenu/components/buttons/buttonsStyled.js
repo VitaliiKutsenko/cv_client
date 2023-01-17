@@ -9,8 +9,9 @@ export const FormButtonWrapper = styled.button`
   cursor: pointer;
   background: transparent;
   transition: 0.5s linear;
+
   & svg {
-    width: 30px;
+    width: 25px;
     height: fit-content;
     background: transparent;
     transition: 0.5s linear;
@@ -19,7 +20,7 @@ export const FormButtonWrapper = styled.button`
   }
   &:hover svg {
     transition: 0.5s linear;
-    transform: rotate(90deg);
+    transform: ${({ animate }) => (animate ? 'rotate(90deg' : null)};
     background: transparent;
     fill: ${({ fillColor }) => fillColor || 'red'};
     fill-opacity: 0.5;
@@ -51,10 +52,6 @@ export const SubmitButtonWrapper = styled.div`
       background: tomato;
       transition: 0.3s linear;
       transform: rotateX(180deg);
-      &.show {
-      }
-      &.hide {
-      }
     }
   }
 `;

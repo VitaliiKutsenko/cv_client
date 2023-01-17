@@ -1,18 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { MenuFormContent } from './formInput/menuFormContent';
 import { FormHeader } from './formHeaderMenu/formHeader';
-import styled from 'styled-components';
+import { ModalFormWrapper } from './menuFormStyled';
 
-export const MenuForm = ({
-  path,
-  id,
-  fieldsList,
-  onSubmit,
-  handleAdditionalField,
-  handleRemoveAdditionalField,
-  initialItem,
-}) => {
+export const MenuForm = props => {
+  const { path, id, fieldsList, initialItem } = props;
   const formMethods = useForm({
     mode: 'onSubmit',
     defaultValues: { [path]: fieldsList },
@@ -32,7 +25,7 @@ export const MenuForm = ({
       },
     };
 
-    onSubmit(item);
+    props.onSubmit(item);
   };
 
   const renderEditCards = (fields = []) => {
@@ -42,58 +35,18 @@ export const MenuForm = ({
   };
 
   return (
-    <FormProvider {...formMethods}>
-      <ModalFormWrapper>
-        <FormHeader
-          id={id}
-          handleAdditionalField={handleAdditionalField}
-          handleRemoveAdditionalField={handleRemoveAdditionalField}
-        />
+    <ModalFormWrapper>
+      <FormHeader
+        id={id}
+        handleAdditionalField={props.handleAdditionalField}
+        handleRemoveAdditionalField={props.handleRemoveAdditionalField}
+      />
+      <FormProvider {...formMethods}>
         <form onSubmit={handleSubmit(getSubmitData)}>
           <ul>{renderEditCards(fields)}</ul>
-          <div className="form_button__wrapper">
-            <button type="submit">Confirm</button>
-          </div>
+          <input type="submit" value="Confirm" />
         </form>
-      </ModalFormWrapper>
-    </FormProvider>
+      </FormProvider>
+    </ModalFormWrapper>
   );
 };
-
-export const ModalFormWrapper = styled.div`
-  height: inherit;
-  width: 100%;
-  & form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    & ul {
-      width: 100%;
-      height: 100%;
-      max-height: fit-content;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      overflow: auto;
-    }
-    & .form_button__wrapper {
-      width: 100%;
-      height: fit-content;
-      display: flex;
-      align-items: center;
-      justify-self: flex-end;
-      align-self: flex-end;
-      justify-content: flex-end;
-      flex-direction: row;
-      & button {
-        padding: 10px;
-      }
-    }
-  }
-`;

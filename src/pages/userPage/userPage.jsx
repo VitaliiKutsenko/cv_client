@@ -1,21 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { UserPageWrapper, UserLinks, UserOutlet } from './userPageStyled';
-import { Route, Navigate, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { CustomLink } from '../../components/customLinks/customLink';
+import { useSelector } from 'react-redux';
 
 const UserPage = ({}) => {
+  const userPageMenu = useSelector(store => store.languages.initial.userPage);
+
+  const userPageMenuRender = menuItem => {
+    return menuItem.map(item => {
+      return (
+        <CustomLink key={item.path} to={item.path}>
+          {item.title}
+        </CustomLink>
+      );
+    });
+  };
+
   return (
     <UserPageWrapper>
       <UserOutlet>
         <Outlet />
       </UserOutlet>
-      <UserLinks>
-        <CustomLink to="profile">Profile</CustomLink>
-        <CustomLink to="collections">Collections</CustomLink>
-        <CustomLink to="comments">Comments</CustomLink>
-        <CustomLink to="auth">Switch account</CustomLink>
-        <CustomLink to="logout">Logout</CustomLink>
-      </UserLinks>
+      <UserLinks>{userPageMenuRender(userPageMenu)}</UserLinks>
     </UserPageWrapper>
   );
 };

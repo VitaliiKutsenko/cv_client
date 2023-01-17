@@ -9,7 +9,7 @@ import { selectUserCards } from '../../store/cv/menuFields/cvAlluserFieldsSelect
 import { addCvField, removeCvField } from '../../store/cv/userCv/userCvActions';
 import { PhotoCard } from './components/photoCard/photoCard';
 
-export const MenuControllers = ({ path, collectionId }) => {
+export const MenuControllers = ({ path, collectionId, svg }) => {
   const fieldDispatch = useDispatch();
   const store = useSelector(selectUserCards);
 
@@ -30,37 +30,44 @@ export const MenuControllers = ({ path, collectionId }) => {
     }
   };
 
+  const handleSubmit = e => {
+    fieldDispatch(
+      addCvField({
+        ...collectionId,
+        ...e,
+      })
+    );
+  };
+
   const renderForm = () => {
-    if (path !== 'photo') {
-      const initialItem = store[path];
+    switch (path) {
+      case 'photo': {
+        return <PhotoCard collectionId={collectionId} />;
+      }
 
-      return initialItem.map(({ id, fields }) => {
-        return (
-          <MenuForm
-            key={id}
-            id={id}
-            initialItem={initialItem}
-            path={path}
-            onSubmit={event => {
-              fieldDispatch(
-                addCvField({
-                  ...collectionId,
-                  ...event,
-                })
-              );
-            }}
-            fieldsList={fields}
-            handleAdditionalField={handleAddNewField}
-            handleRemoveAdditionalField={handleRemoveNewField}
-          />
-        );
-      });
-    }
-
-    if (path === 'photo') {
-      return <PhotoCard collectionId={collectionId} />;
+      default: {
+        return store[path].map(({ id, fields }) => {
+          return (
+            <MenuForm
+              key={id}
+              id={id}
+              initialItem={store[path]}
+              path={path}
+              fieldsList={fields}
+              onSubmit={e => handleSubmit(e)}
+              handleAdditionalField={handleAddNewField}
+              handleRemoveAdditionalField={handleRemoveNewField}
+            />
+          );
+        });
+      }
     }
   };
 
-  return renderForm();
+  return (
+    <>
+      {svg}
+      {renderForm()}
+    </>
+  );
 };

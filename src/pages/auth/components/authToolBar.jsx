@@ -3,7 +3,7 @@ import { AuthToolBarWrapper } from '../authStyle';
 import { NavLink, useLocation } from 'react-router-dom';
 import Cross from '../../../../public/svg_actions/Cross.svg';
 
-export const AuthToolBar = ({ children }) => {
+export const AuthToolBar = ({ children, content }) => {
   const location = useLocation();
 
   const renderToolbarContent = path => {
@@ -13,14 +13,16 @@ export const AuthToolBar = ({ children }) => {
       case 'auth':
         return (
           <p>
-            Join us! <NavLink to="/auth/registration">Sign up</NavLink>
+            <NavLink to="/auth/registration">{content.login.navBarText.link}</NavLink>
+            {content.login.navBarText.title}
           </p>
         );
 
       case 'registration':
         return (
           <p>
-            Already have an account? <NavLink to="/auth">Sign in</NavLink>
+            {content.signUp.navBarText.title}
+            <NavLink to="/auth"> {content.signUp.navBarText.link}</NavLink>
           </p>
         );
 
