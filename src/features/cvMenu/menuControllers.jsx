@@ -47,13 +47,13 @@ export const MenuControllers = ({ path, collectionId, svg }) => {
 
       default: {
         return store[path].map(({ id, fields }) => {
+          console.log(fields);
+
           return (
             <MenuForm
               key={id}
               id={id}
-              initialItem={store[path]}
-              path={path}
-              fieldsList={fields}
+              fields={fields}
               onSubmit={e => handleSubmit(e)}
               handleAdditionalField={handleAddNewField}
               handleRemoveAdditionalField={handleRemoveNewField}

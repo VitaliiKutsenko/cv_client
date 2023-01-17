@@ -1,5 +1,4 @@
 import {
-  FETCH_USER_FIELDS,
   RESPONSE_USER_FIELDS_DENIED,
   RESPONSE_USER_FIELDS_SUCCESS,
   ADD_FIELDS,
@@ -8,8 +7,9 @@ import {
 } from './cvAllUserFieldsActionTypes';
 import { modalFieldsSchema } from '../../../features/cvMenu/schema/modalFields';
 import { cvReducerServices } from './cvAllUserFieldsReducerServices';
+import { contentFieldsSchema } from '../../../features/cvMenu/schema/contentFields';
 
-const initialState = { ...modalFieldsSchema };
+const initialState = { ...contentFieldsSchema };
 
 export const cvAllUserFields = (state = initialState, { type, payload }) => {
   switch (type) {

@@ -3,34 +3,29 @@ import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { MenuFormContent } from './formInput/menuFormContent';
 import { FormHeader } from './formHeaderMenu/formHeader';
 import { ModalFormWrapper } from './menuFormStyled';
+import { MenuFields } from './menuFields/menuFields';
 
 export const MenuForm = props => {
-  const { path, id, fieldsList, initialItem } = props;
-  const formMethods = useForm({
-    mode: 'onSubmit',
-    defaultValues: { [path]: fieldsList },
-  });
-  const { control, handleSubmit } = formMethods;
-  const { fields } = useFieldArray({
-    control,
-    name: path,
-  });
+  const { id, fields } = props;
+  const { handleSubmit, register, control, resetField } = useForm({ mode: 'onSubmit' });
 
   const getSubmitData = inputField => {
-    const combineFields = initialItem.find(item => item.id === id);
-    const item = {
-      [path]: {
-        ...combineFields,
-        fields: inputField[path],
-      },
-    };
-
-    props.onSubmit(item);
+    // props.onSubmit(item);
+    console.log(inputField);
   };
 
   const renderEditCards = (fields = []) => {
     return fields.map((field, index) => {
-      return <MenuFormContent path={path} key={field.id} id={id} fieldIndex={index} {...field} />;
+      return (
+        <MenuFields
+          key={index}
+          register={register}
+          control={control}
+          resetField={resetField}
+          date={false}
+          {...field}
+        />
+      );
     });
   };
 
@@ -41,12 +36,10 @@ export const MenuForm = props => {
         handleAdditionalField={props.handleAdditionalField}
         handleRemoveAdditionalField={props.handleRemoveAdditionalField}
       />
-      <FormProvider {...formMethods}>
-        <form onSubmit={handleSubmit(getSubmitData)}>
-          <ul>{renderEditCards(fields)}</ul>
-          <input type="submit" value="Confirm" />
-        </form>
-      </FormProvider>
+      <form onSubmit={handleSubmit(getSubmitData)}>
+        <ul>{renderEditCards(fields)}</ul>
+        <input type="submit" value="Confirm" />
+      </form>
     </ModalFormWrapper>
   );
 };
