@@ -1,13 +1,12 @@
 import React from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import { MenuFormContent } from './formInput/menuFormContent';
 import { FormHeader } from './formHeaderMenu/formHeader';
 import { ModalFormWrapper } from './menuFormStyled';
 import { MenuFields } from './menuFields/menuFields';
 
 export const MenuForm = props => {
   const { id, fields } = props;
-  const { handleSubmit, register, control, resetField } = useForm({ mode: 'onSubmit' });
+  const { handleSubmit, register, control, resetField, getValues } = useForm({ mode: 'onSubmit' });
 
   const getSubmitData = inputField => {
     // props.onSubmit(item);
@@ -22,7 +21,9 @@ export const MenuForm = props => {
           register={register}
           control={control}
           resetField={resetField}
+          getValues={getValues}
           date={false}
+          index={index}
           {...field}
         />
       );

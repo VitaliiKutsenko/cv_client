@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { MenuForm } from './menuForm/menuForm';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -30,14 +30,15 @@ export const MenuControllers = ({ path, collectionId, svg }) => {
     }
   };
 
-  const handleSubmit = e => {
-    fieldDispatch(
-      addCvField({
-        ...collectionId,
-        ...e,
-      })
-    );
-  };
+  const handleSubmit = useCallback(e => {
+    console.log(e);
+    // fieldDispatch(
+    //   addCvField({
+    //     ...collectionId,
+    //     ...e,
+    //   })
+    // );
+  }, []);
 
   const renderForm = () => {
     switch (path) {
